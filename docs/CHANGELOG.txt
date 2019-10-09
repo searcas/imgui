@@ -106,6 +106,13 @@ Breaking Changes:
 -
 
 Other Changes:
+- Fixed a couple of subtle bounding box vertical positioning issues relating to the handling of text
+  baseline alignment. The issue would generally manifest when laying out multiple items on a same line,
+  with varying heights and text baseline offsets.
+  Some specific examples, e.g. a button with regular frame padding followed by another item with a
+  multi-line label and no frame padding, such as: multi-line text, small button, tree node item, etc.
+  The second item was correctly offset to match text baseline, and would interact/display correctly,
+  but it wouldn't push the contents area boundary low enough.
 - InputText, Nav: Fixed Home/End key broken when activating Keyboard Navigation. (#787)
 - TreeNode: Fixed combination of ImGuiTreeNodeFlags_SpanFullWidth and ImGuiTreeNodeFlags_OpenOnArrow
   incorrectly locating the arrow hit position to the left of the frame. (#2451, #2438, #1897)
